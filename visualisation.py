@@ -1,4 +1,34 @@
 # Importation des modules nécessaires pour la manipulation des coordonnées,
+
+
+"""
+Cette fonction applique une réflexion miroir à un point par rapport à un axe spécifié
+
+Arguments:
+    point (tuple) : représent les coordonnées du points à réfléchir
+    axe (str) : représent l'axe de réflexion 'x' ou 'y'. Si l'axe choisie est x, il y aura réflexion par rapport à l'axe verticale (miroir horizontal), : changement de la coordonnées y
+        si l'axe 'y' est choisie il y aura reflexion par rapport à l'axe horizontal(miroir vertical) : changement de la coordonnées x
+Retourne :
+    (tuple) : Représent les nouvelles coordonnées du point refletté
+"""
+
+
+def calculer_reflexion_point(point, axe):
+    a = 0
+    b = 0
+    if axe == 'x':
+        a = point[1]
+        b = -(point[0])
+
+
+    elif axe == 'y':
+        a = -(point[1])
+        b = point[0]
+    else:
+        print(f'axe invalide')
+
+    return (a, b)  # TUPLE REFLETTÉ
+
 # le traitement des images, la segmentation et la manipulation des histogrammes.
 # matplotlib.pyplot est utilisé pour la visualisation graphique.
 from coordonnees_clou import *
