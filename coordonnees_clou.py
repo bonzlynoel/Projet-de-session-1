@@ -1,5 +1,5 @@
 from math import sin,cos,pi,tan
-from visualisation import visualiser_points_clou
+#from visualisation import visualiser_points_clou
 
 # Press the green button in the gutter to run the script.
 
@@ -20,14 +20,14 @@ Retourne :
 def calculer_reflexion_point(point, axe):
     a = 0
     b = 0
+    a = point[0]
+    b = point[1]
     if axe == 'x':
-        a = point[0]
-        b = -(point[1])
+        b = -1*b
 
 
     elif axe == 'y':
-        a = -(point[0])
-        b = point[1]
+        a = -1*a
     else:
         print(f'axe invalide')
 
@@ -118,35 +118,5 @@ def calculer_coordonnees_clou(a,b,c,d,e):
 
     liste = [('pt_0',pt_0),('pt_1',pt_1),('pt_2',pt_2),('pt_3',pt_3),('pk_0',pk_0),('pk_1',pk_1),('pk_2',pk_2)]
     return liste
-'''
-Cette fonction prend un ensemble de points clés représentatn un clou et applique trois types de transformation géométrique.(rotation,réflexion,inclinaision)
-chaque transformation est appliquée séquentiellement à tous les points clés.
-
-Arguments : 
-    points_clou (list) : Une liste de tuple de laquelle chaque tuples contient : une Chaine de caractères ( nom du point) et un tuple de deux nombres (float, float)
-        représentant les coordonnées du point dans un plan 2D
-    center_rotation( tuple) : représente les coordonnées du centre de rotation 
-    angle_rotation (float) : l'angle de rotation en degrés
-    angle_inclinaison (float) : l'angle d'inclinaison en degrés
-    direction_inclinaison (float) : la direction de l'inclinaison ('x' ou 'y')
-    axe_reflexion (str) : l'axe de reflexion ('x' ou 'y')
-Retourne : 
-    tuple : trois listes de tuple de lesquelles chaque tuples contient : une Chaine de caractères ( nom du point) et un tuple de deux nombres (float, float)
-        représentant les coordonnées du point dans un plan 2D après chaque transformation.
-'''
-
-def appliquer_transformation_clou(points_clou,center_rotation,angle_rotation,angle_inclinaison,direction_inclinaison,axe_reflexion):
-    reflexion_points = []
-    rotation_points = []
-    inclinaison_points = []
-
-    points = points_clou[1:len(points_clou)-1:2]
-    print(f'{points}')
-    for i in range(len(points)):
-            reflexion_points[i-1] = calculer_reflexion_point(points[i-1],axe_reflexion)# la virgule fait une accumulation de points
-            rotation_points[i-1] = calculer_rotate_point(points[i-1], angle_rotation, center_rotation)
-            inclinaison_points[i-1] = calculer_inclinaison_point(points[i-1], angle_inclinaison, direction_inclinaison)
-
-    return reflexion_points,rotation_points,inclinaison_points
 
 

@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
     # Application de transformations (réflexion, rotation, inclinaison) sur les points du clou
     # et visualisation des résultats de ces transformations
-    reflected_points_list, rotated_points_list, inclin_points_list = appliquer_transormation_clou(coords_clou, (0,0), 30, 'x', 20, 'x')
+    reflected_points_list, rotated_points_list, inclin_points_list = appliquer_transformation_clou(coords_clou, (0,0), 30, 'x', 20, 'x')
     visualiser_transformations_clou(reflected_points_list, rotated_points_list, inclin_points_list)
 
     # Chemin des images d'origine et en niveaux de gris
