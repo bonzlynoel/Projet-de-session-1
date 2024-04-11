@@ -75,13 +75,13 @@ def visualiser_image_couleur_ng(chemin_vers_image_org, chemin_vers_image_ng):
 # Fonction pour visualiser les transformations appliquées à une image en niveaux de gris.
 
 def visualiser_transforms_image(path_image_ng, radius=2):
-    """
-    Visualise les transformations appliquées sur une image en niveaux de gris.
+    
+    # Visualise les transformations appliquées sur une image en niveaux de gris.
 
-    Args:
-    path_image_ng (str): Chemin de l'image en niveaux de gris.
-    radius (int): Rayon utilisé dans la deuxième transformation.
-    """
+    # Args:
+    # path_image_ng (str): Chemin de l'image en niveaux de gris.
+    # radius (int): Rayon utilisé dans la deuxième transformation.
+    
 
     # Ouverture de l'image et conversion en tableau NumPy pour le traitement
     img = Image.open(path_image_ng).convert('L')
@@ -107,14 +107,14 @@ def visualiser_transforms_image(path_image_ng, radius=2):
     plt.show()  # Affichage de la figure complète
 
 def visualiser_seg_image(path_image_ng, radius=2, w=3):
-    """
-    Visualise l'image segmentée après avoir appliqué une transformation et calculé un histogramme.
+    
+    #Visualise l'image segmentée après avoir appliqué une transformation et calculé un histogramme.
 
-    Args:
-    path_image_ng (str): Chemin de l'image en niveaux de gris.
-    radius (int): Rayon utilisé dans la transformation.
-    w (int): Largeur de la fenêtre utilisée pour le calcul de l'histogramme.
-    """
+    #Args:
+    #path_image_ng (str): Chemin de l'image en niveaux de gris.
+    #radius (int): Rayon utilisé dans la transformation.
+    #w (int): Largeur de la fenêtre utilisée pour le calcul de l'histogramme.
+    
 
     # Ouverture et traitement de l'image
     img = Image.open(path_image_ng).convert('L')
@@ -132,12 +132,12 @@ def visualiser_seg_image(path_image_ng, radius=2, w=3):
     plt.show()  # Affichage de l'image segmentée
 
 def visualiser_transformations_clou(*coordonnees_lists):
-    """
-    Visualise les transformations appliquées sur les coordonnées d'un clou.
+    
+    # Visualise les transformations appliquées sur les coordonnées d'un clou.
 
-    Args:
-    coordonnees_lists (tuple): Listes de coordonnées transformées à afficher.
-    """
+    # Args:
+    # coordonnees_lists (tuple): Listes de coordonnées transformées à afficher.
+    
 
     # Création d'une figure avec plusieurs graphiques pour chaque transformation
     fig, axes = plt.subplots(len(coordonnees_lists), 1, figsize=(6, 12))
