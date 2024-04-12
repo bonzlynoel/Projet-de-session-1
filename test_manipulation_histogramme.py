@@ -1,11 +1,14 @@
-def test_calculer_histogramme()
-    assert 
-
-
-
-
-
+import manipulation_histogramme.py as mh
 import unittest
+
+def test_calculer_histogramme()
+    assert mh.calculer_histogramme
+
+
+
+
+
+
 
 
 class MyTestCase(unittest.TestCase):
