@@ -20,9 +20,6 @@ def appliquer_rgb_to_gry(path_image_orig, path_image_ng):
     #Convertir l'image en niveaux de gris
     image_array = convertir_rgb_to_gry(image_couleur)
 
-    # Sauvegarder l'image en niveaux de gris
-    image_array.save(path_image_ng)
-
 def convertir_rgb_to_gry(image_couleur):
 
     largeur, hauteur = image_couleur.size
