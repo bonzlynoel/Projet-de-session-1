@@ -61,19 +61,19 @@ def appliquer_transformation_1(image_array):
     resultat_transformation = np.zeros_like(image_array, dtype=np.uint8)
 
     #Dimensions de l'image
-    hauteur, largeur = image_array.shape
+    largeur, hauteur = image_array.shape
 
     #Parcourir chaque pixel de l'image
-    for y in range(1, hauteur - 1):  # Ignorer les bords pour éviter les problèmes
-        for x in range(1, largeur - 1):
+    for x in range(1, largeur - 1):  # Ignorer les bords pour éviter les problèmes
+        for y in range(1, hauteur - 1):
             #Obtenir les valeurs de gris des voisins
             voisins = [
-                image_array[y - 1, x - 1], image_array[y - 1, x], image_array[y - 1, x + 1],
-                image_array[y, x - 1], image_array[y, x + 1],
-                image_array[y + 1, x - 1], image_array[y + 1, x], image_array[y + 1, x + 1]
+                image_array[x - 1, y - 1], image_array[x - 1, y], image_array[x - 1, y + 1],
+                image_array[x, y - 1], image_array[x, y + 1],
+                image_array[x + 1, y - 1], image_array[x + 1, y], image_array[x + 1, y + 1]
             ]
             #Pixel central
-            pixel_central = image_array[y, x]
+            pixel_central = image_array[x, y]
 
             #Comparaison avec les voisins pour former le motif binaire
             motif_binaire = ''.join(['1' if voisin >= pixel_central else '0' for voisin in voisins])
@@ -108,17 +108,17 @@ def appliquer_transformation_2(image_array, radius):
     hauteur, largeur = image_array.shape
 
     # Parcourir chaque pixel de l'image
-    for y in range(rayon, hauteur - radius):  # Ignorer les bords pour éviter les problèmes
-        for x in range(rayon, largeur - radius):
+    for x in range(rayon, largeur - radius):  # Ignorer les bords pour éviter les problèmes
+        for y in range(rayon, hauteur - radius):
             # Calculer la valeur de sortie O(x,y) pour chaque pixel en utilisant la formule donnée
             valeur_sortie = (
-                    np.log10(1 + abs(image_array[y, x + radius] - 2 * image_array[y, x] + image_array[y, x - radius])) +
-                    np.log10(1 + abs(image_array[y + radius, x] - 2 * image_array[y, x] + image_array[y - radius, x])) +
-                    np.log10(1 + abs(image_array[y - rayon, x + radius] - 2 * image_array[y, x] + image_array[y + radius, x - radius]))
+                    np.log10(1 + abs(image_array[x, y + radius] - 2 * image_array[x, y] + image_array[x, y - radius])) +
+                    np.log10(1 + abs(image_array[x + radius, y] - 2 * image_array[x, y] + image_array[x - radius, y])) +
+                    np.log10(1 + abs(image_array[x - rayon, y + radius] - 2 * image_array[x, y] + image_array[x + radius, y - radius]))
             )
 
             # Assigner la valeur de sortie au pixel correspondant dans le résultat de la transformation
-            resultat_transformation[y, x] = valeur_sortie
+            resultat_transformation[x, y] = valeur_sortie
 
     # Remplacer les valeurs des pixels de bord par zéro
     resultat_transformation[:radius, :] = 0
