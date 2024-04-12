@@ -22,7 +22,7 @@ def calculer_histogramme(image_trasf_2, w):
     max_value = np.max(image_trasf_2)
 
     # Créer un tableau pour stocker les histogrammes
-    tab_histo = np.zeros((largeur - w + 1, hauteur - w + 1, 5), dtype=np.int)
+    tab_histo = np.zeros((largeur - w + 1, hauteur - w + 1, 5), dtype=int)
     # Le dernier axe (5) représente les bins: [0, max/4, max/2, 3*max/4, max]
 
     # Parcourir chaque fenêtre dans l'image
