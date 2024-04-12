@@ -1,3 +1,6 @@
+def test_calculer_histogramme(
+
+
 import unittest
 
 
