@@ -1,4 +1,6 @@
 import unittest
+import segmentation as seg
+
 
 
 class MyTestCase(unittest.TestCase):
