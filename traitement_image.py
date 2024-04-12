@@ -34,7 +34,7 @@ def convertir_rgb_to_gry(image_couleur):
             r, g, b = image_couleur.getpixel((x, y))
 
             # Calculer la moyenne des composantes RGB
-            moyenne = round((r + g + b) / 3)
+            moyenne = (r + g + b) // 3
 
             # Définir la nouvelle valeur de pixel en niveaux de gris
             image_array.putpixel((x, y), moyenne)
