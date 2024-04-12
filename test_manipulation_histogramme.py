@@ -7,6 +7,8 @@ def test_calculer_histogramme()
 def test_calculer_distance_1()
     assert mh.calculer_distance_1((1, 2, 3, 4, 5), (2, 3, 4, 5, 6)) == 2.24
 
+def test_calculer_distance_2()
+    assert mh.calculer_distance_2((1, 2, 3, 4, 5), (2, 3, 4, 5, 6)) == 5
 
 
 
