@@ -1,7 +1,4 @@
-#### Test à faire
-
-
-#Section 11 :
+# Section 11 :
     #Création et comparaison d'histogrammes
 
 
@@ -10,44 +7,40 @@
 # Arguments :
     # tableau_2D (numpy.ndarray): Un tableau 2D NumPy représentant une image.
     # w (int): La taille du carré de voisinage autour de chaque pixel pour lequel l'histogramme est calculé.
-#Retourne :
+# Retourne :
     #numpy.ndarray: Un tableau 2D NumPy où chaque ligne représente un histogramme pour le carré correspondant de l'image.
 
-def calculer_histogramme(image_trasf_2, w):
+def calculer_histogramme(tableau, w):
 
     # Déterminer la taille de l'image
-    largeur, hauteur = image_trasf_2.shape
+    hauteur, largeur = len(tableau), len(tableau[0])
 
     # Calculer la valeur maximale dans le tableau 2D
-    max_value = np.max(image_trasf_2)
+    valeur_max = np.max(tableau)
+    
+    # Initialiser l'histogramme
+    histogramme = []
 
-    # Créer un tableau pour stocker les histogrammes
-    tab_histo = np.zeros((largeur - w + 1, hauteur - w + 1, 5), dtype=int)
-    # Le dernier axe (5) représente les bins: [0, max/4, max/2, 3*max/4, max]
+    # Nombre de carrés dans l'image
+    nb_carres_hauteur = hauteur - w + 1
+    nb_carres_largeur = largeur - w + 1
 
     # Parcourir chaque fenêtre dans l'image
-    for x in range(largeur - w + 1):
-        for y in range(hauteur - w + 1):
-            # Extraire la fenêtre
-            fenetre = image_trasf_2[x:x + w, y:y + w]
+    for x in range(nb_carres_hauteur):
+        for y in range(nb_carres_largeur):
+           
+            # Extraire le carré de voisinage
+            fenetre = tableau[x:x + w, y:y + w]
 
-            # Calculer l'histogramme de la fenêtre
-            hist, _ = np.histogram(fenetre, bins=[0, max_value / 4, max_value / 2, (3 * max_value) / 4, max_value],
-                                   range=(0, max_value))
+            # Calculer l'histogramme
+            hist, _ = np.histogram(fenetre, bins=[0, valeur_max / 4, valeur_max / 2, (3 * valeur_max) / 4, valeur_max], range=(0, valeur_max))
 
-            # Assigner l'histogramme au tableau des histogrammes
-            tab_histo[x, y, :] = hist
+            histogramme.append(hist)
 
-    return tab_histo
-
-
-
-
-
-
-#### Test à faire
+    return np.array(histogramme)
 
 # Cette fonction calcule la distance entre deux histogrammes.
+
 # Arguments:
     # histogramme1 (numpy.ndarray): Premier histogramme sous forme de tableau 1D NumPy.
     # histogramme2 (numpy.ndarray): Deuxième histogramme sous forme de tableau 1D NumPy
@@ -69,13 +62,8 @@ def calculer_distance_1(h1, h2):
 
     return distance_arrondie_1
 
+# Cette fonction calcule la distance entre deux histogrammes.
 
-
-
-
-#### Test à faire
-
-# Calculer la distance entre deux histogrammes.
 # Arguments :
     # histogramme1 (numpy.ndarray): Premier histogramme sous forme de tableau 1D NumPy.
     # histogramme2 (numpy.ndarray): Deuxième histogramme sous forme de tableau 1D NumPy
